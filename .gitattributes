@@ -1,0 +1,4 @@
+Model filter=lfs diff=lfs merge=lfs -text
+Model/model_vgg19.h5 filter=lfs diff=lfs merge=lfs -text
+Model/pneumonia.h5 filter=lfs diff=lfs merge=lfs -text
+Notebooks filter=lfs diff=lfs merge=lfs -text
