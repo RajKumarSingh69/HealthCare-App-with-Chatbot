@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+	<title>kidney_pred</title>
+    
+</head>
+	<style>
+    #main-footer
+    {
+      color: #FFFFFF;
+      font-family: "Segoe UI";
+      background: #2B2B2B;
+      text-align: center;
+      margin-top: 1px;
+      padding: 16px;
+      bottom: 8px;
+    }</style>
+	
+<body>
+    <header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="/">Health Care App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="/home">Home</a>
+          <a class="nav-item nav-link" href="/about">About</a>
+          <a class="nav-item nav-link" href="/cancer">Cancer</a>
+          <a class="nav-item nav-link" href="/diabetes">Diabetes</a>
+          <a class="nav-item nav-link" href="/heart">Heart</a>
+          <a class="nav-item nav-link" href="/liver">Liver</a>
+          <a class="nav-item nav-link" href="/kidney">Kidney</a>
+           <a class="nav-item nav-link" href="/malaria">Malaria</a>
+           <a class="nav-item nav-link" href="/pneumonia">Pneumonia</a>
+
+        </div>
+        <div class="navbar-nav ml-auto">
+          <a class="nav-item nav-link" href="/logout">Logout</a>
+      </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container",class="form-group">
+        <h2>Details : </h2>
+    <h2>Welcome</h2>
+    <h3>Enter the Following parameters :</h3>
+  <form action="{{ url_for('kidney_prediction')}}" method="POST">
+    <label for="age">Age : </label>
+    <input type="text" id="age" name="age">
+    <br>
+
+    <label for="bp">B.P : </label>
+    <input type="text" id="bp" name="bp">
+    <br>
+
+    <label for="sg">Specific_Gravity : </label>
+    <input type="text" id="sg" name="sg">
+    <br>
+
+    <label for="al">Albumin : </label>
+    <input type="text" id="al" name="al">
+    <br>
+
+    <label for="sugar">Sugar : </label>
+    <input type="text" id="sugar" name="sugar">
+    <br>
+
+    <label for="RBC">R.B.C : </label>
+    <input type="text" id="RBC" name="RBC">
+    <br>
+
+    <label for="Pus_cell">Pus_cell : </label>
+    <input type="text" id="Push_cell" name="Pus_cell">
+    <br>
+
+    <label for="pcc">P.C.C: </label>
+    <input type="text" id="pcc" name="pcc">
+    <br>
+
+    <label for="Bacteria">Bacteria : </label>
+    <input type="text" id="Bacteria" name="Bacteria">
+    <br>
+
+    <label for="bgr">B.G.R : </label>
+    <input type="text" id="bgr" name="bgr">
+    <br>
+
+
+    <label for="bu">blood_urea : </label>
+    <input type="text" id="bu" name="bu">
+    <br>
+
+    <label for="sc">Serun  creatinine : </label>
+    <input type="text" id="sc" name="sc">
+    <br>
+
+    <label for="sodium">Sodium: </label>
+    <input type="text" id="sodium" name="sodium">
+    <br>
+
+    <label for="potassium">Potassium: </label>
+    <input type="text" id="potassium" name="potassium">
+    <br>
+
+    <label for="Haemoglobin">Haemoglobin: </label>
+    <input type="text" id="Haemoglobin" name="Haemoglobin">
+    <br>
+
+    <label for="pcv">P.C.V :</label>: </label>
+    <input type="text" id="pcv" name="pcv">
+    <br>
+
+    <label for="wbc">W.B.C : </label>
+    <input type="text" id="wbc" name="wbc">
+    <br>
+
+    <label for="rbcc">R.B.C.C: </label>
+    <input type="text" id="rbcc" name="rbcc">
+    <br>
+
+    <label for="hp">Hypertension: </label>
+    <input type="text" id="hp" name="hp">
+    <br>
+
+    <label for="dm">Diabetes Mellitus: </label>
+    <input type="text" id="dm" name="dm">
+    <br>
+
+    <label for="cad">C.A.D: </label>
+    <input type="text" id="cad" name="cad">
+    <br>
+
+    <label for="ap">Appetite: </label>
+    <input type="text" id="ap" name="ap">
+    <br>
+
+    <label for="pe">Peda Edema: </label>
+    <input type="text" id="pe" name="pe">
+    <br>
+
+    <label for="aanemia">Aanemia: </label>
+    <input type="text" id="aanemia" name="aanemia">
+    <br>
+    <br>
+
+    <input type="submit" value="Submit"><br><br>
+</form>
+
+<h2>
+  THE Kidney prediction is {{result}}
+</h2>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<footer id="main-footer">
+      Copyright &copy; 2024
+    </footer>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <title>Malaria Cell Classification</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<script>
+    function showloading() {
+        image = document.getElementById('loading_image');
+        image.style.display = 'inline'
+    }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(500)
+                    .height(500);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<style>
+    #main-footer {
+        color: #FFFFFF;
+        font-family: "Segoe UI";
+        background: #2B2B2B;
+        text-align: center;
+        margin-top: 165px;
+        padding: 16px;
+        bottom: 8px;
+    }
+
+    .img_holder img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    #left_m {
+        margin-left: 5px;
+        margin-top: 2px;
+    }
+</style>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="/">Health Care App</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="/home">Home</a>
+                        <a class="nav-item nav-link" href="/about">About</a>
+                        <a class="nav-item nav-link" href="/cancer">Cancer</a>
+                        <a class="nav-item nav-link" href="/diabetes">Diabetes</a>
+                        <a class="nav-item nav-link" href="/heart">Heart</a>
+                        <a class="nav-item nav-link" href="/liver">Liver</a>
+                        <a class="nav-item nav-link" href="/kidney">Kidney</a>
+                        <a class="nav-item nav-link" href="/malaria">Malaria</a>
+                        <a class="nav-item nav-link" href="/pneumonia">Pneumonia</a>
+
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
+                    </div>
+                </div>
+        </nav>
+    </header>
+    <header class="container">
+        <div id="left_m" class="col-md-3">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+
+
+        <h3 style="margin: auto;width: 80%; text-align: center; margin-top: 20px;  text-transform: uppercase">Malaria
+            Cell Classification</h3>
+
+        <div style="text-align: center; margin-top: 20px">
+            <img style="max-width: 600px" src="{{ url_for('static', filename='malaria.jpg') }}" />
+        </div>
+        {% if message %}
+        <div class="alert alert-danger">{{ message }}</div>
+        {% endif %}
+        <div class="row" style="margin-bottom: 300px;">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <center>
+                    <h1 style="color:rgb(7, 7, 7);">Malaria Predictor</h1>
+                </center>
+                <div class="card card-body" style="background-color: #FFFFFF;">
+                    <center>
+                        <h3>Please upload the cell image</h3>
+                    </center>
+                    <form class="form-horizontal" action="{{ url_for('upload_file')}}" method="POST"
+                        enctype="multipart/form-data">
+                        <center>
+                            <input onchange="readURL(this);" type="file" name="image" placeholder="Upload Image">
+                            <br>
+                            <br>
+                            <img class="img-fluid" id="blah" src="#" alt="Uploaded image will appear here" />
+                            <br>
+                            <br>
+                            <input style="background-color: #4e0374" class="btn btn-info" type="submit">
+                        </center>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </header>
+    <footer id="main-footer">
+        Copyright &copy; 2024
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/form.css">
+    <title>Login</title>
+    <script>
+        function showAlert(message) {
+            if (message) {
+                alert(message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 class="heading">Advance Health Disease Prediction</h1>
+    <div class="container">
+        <div class="box form-box">
+            <header>Login</header>
+            <form action="{{ url_for('login') }}" method="post">
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" autocomplete="off" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autocomplete="off" required>
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Login" required>
+                </div>
+                <div class="links">
+                    Don't have account? <a href="/register">Sign Up Now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var flashMessage = "{{ get_flashed_messages()[0] if get_flashed_messages() else '' }}";
+            showAlert(flashMessage);
+        });
+    </script></div>
+</body>
+</html>

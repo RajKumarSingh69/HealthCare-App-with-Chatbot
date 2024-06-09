@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <title>Home</title>
+    <style>
+        /* Your custom CSS styles */
+
+        /* Additional styles for improved aesthetics and interactivity */
+        body {
+            padding-top: 56px;
+            /* Adjusted to accommodate the fixed navbar */
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-top: -10px;
+        }
+
+        footer {
+            background-color: #2B2B2B;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .chatbot-icon {
+            position: fixed;
+            bottom: 80px;
+            right: 70px;
+            /* Adjusted right position */
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #007bff;
+            background-image: url('https://www.prdistribution.com/spirit/uploads/pressreleases/2019/newsreleases/d83341deb75c4c4f6b113f27b1e42cd8-chatbot-florence-already-helps-thousands-of-patients-to-remember-their-medication.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .chatbot-icon .text-overlay {
+            position: absolute;
+            top: -30px;
+            /* Adjusted position for visibility */
+            left: 50%;
+            transform: translateX(-50%);
+            /* Center the text */
+            width: 200px;
+            /* Adjusted width */
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: black;
+            /* Changed text color */
+            padding: 10px;
+        }
+
+        .chatbot-frame {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            background-color: white;
+        }
+
+        .chatbot-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .close-chatbot {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Include Typed.js -->
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="/">Health Care app</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="/home">Home</a>
+                        <a class="nav-item nav-link" href="/about">About</a>
+                        <a class="nav-item nav-link" href="/cancer">Cancer</a>
+                        <a class="nav-item nav-link" href="/diabetes">Diabetes</a>
+                        <a class="nav-item nav-link" href="/heart">Heart</a>
+                        <a class="nav-item nav-link" href="/liver">Liver</a>
+                        <a class="nav-item nav-link" href="/kidney">Kidney</a>
+                        <a class="nav-item nav-link" href="/malaria">Malaria</a>
+                        <a class="nav-item nav-link" href="/pneumonia">Pneumonia</a>
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!--<div class="col-md-8">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>-->
+
+        <h1>Welcome to Advance Health Disease Prediction App</h1>
+
+        <h3>Overview</h3>
+        <p>In today's world, the scarcity of medical professionals, particularly in developing regions like India, poses
+            significant challenges. Many individuals suffer without access to proper medical examinations, and often,
+            fatalities occur due to the absence of timely healthcare intervention.</p>
+        <p>To address these issues, our project focuses on developing a solution leveraging machine learning algorithms
+            for the prediction of multiple health diseases. By analyzing patient data and utilizing advanced algorithms,
+            our platform aims to provide early detection and personalized recommendations for effective disease
+            management.</p>
+
+        <h3>Application</h3>
+        <ul>
+            <li>Empowering individuals with easy access to medical assistance, regardless of geographical constraints.
+            </li>
+            <li>Providing cost-effective healthcare solutions to underprivileged communities.</li>
+            <li>Reducing unnecessary financial burdens on patients by avoiding unnecessary medical consultations.</li>
+            <li>Expanding the role of technology in the healthcare sector to enhance diagnostics and preventive
+                measures.</li>
+            <li>Facilitating remote monitoring and management of chronic conditions through predictive analytics.</li>
+            <li>Enabling proactive healthcare interventions to improve patient outcomes and quality of life.</li>
+        </ul>
+
+        <h3>Creator</h3>
+        <p>Junior ML Engineer: Raj Kumar</p>
+    </div>
+
+    <div class="chatbot-icon" id="chatbotIcon">
+        <div class="text-overlay"><span id="chatbotText"></span></div>
+    </div>
+
+    <div class="chatbot-frame" id="chatbotFrame">
+        <button class="close-chatbot" id="closeChatbot">&uarr;</button>
+        <iframe src="/chat" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        // Initialize Typed.js
+        var typed = new Typed("#chatbotText", {
+            strings: ["Hello! Ask me anything."],
+            typeSpeed: 50,
+            backSpeed: 50,
+            backDelay: 1000,
+            loop: true
+        });
+
+        // Display and hide chatbot frame
+        document.getElementById("chatbotIcon").onclick = function () {
+            var chatbotFrame = document.getElementById("chatbotFrame");
+            if (chatbotFrame.style.display === "none" || chatbotFrame.style.display === "") {
+                chatbotFrame.style.display = "block";
+            } else {
+                chatbotFrame.style.display = "none";
+            }
+        };
+
+        // Hide chatbot frame when close button is clicked
+        document.getElementById("closeChatbot").onclick = function () {
+            var chatbotFrame = document.getElementById("chatbotFrame");
+            chatbotFrame.style.display = "none";
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzm7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9Q+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7HUiibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <footer id="main-footer">
+        Copyright &copy; 2024
+    </footer>
+</body>
+
+</html>

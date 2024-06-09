@@ -1,0 +1,23 @@
+os
+shutil
+random
+numpy
+pandas
+itertools
+tqdm 
+cv2
+scipy 
+skimage
+copy
+seaborn
+tensorflow
+matplotlib
+secrets
+
+ctransformers==0.2.5
+sentence-transformers==2.2.2
+chromadb
+langchain==0.0.225
+flask
+pypdf
+-e .
